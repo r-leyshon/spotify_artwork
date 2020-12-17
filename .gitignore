@@ -1,5 +1,5 @@
 # data folder
-.data/
+.data/*.xlsx
 
 # credentials for your spotify app
 .credentials/
