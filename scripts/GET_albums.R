@@ -7,6 +7,7 @@ library(spotifyr)
 library(magick)
 library(readxl)
 library(rlist)
+library(patchwork)
 
 # source credentials ------------------------------------------------------
 source("credentials/credentials.R")
@@ -32,8 +33,11 @@ album_tracker$img_url <- unlist(list.select(all_albums, images$url[2]))
 
 read_artworks <- function(urls){
   print(urls)
+  # read in the image
   img <- image_read(urls)
-  return(img)
+  # convert to ggplot for easy patchwork
+  plt <- image_ggplot(img, interpolate = FALSE)
+  return(plt)
 }
 
 all_artworks <- lapply(album_tracker$img_url, read_artworks)
@@ -41,6 +45,4 @@ all_artworks <- lapply(album_tracker$img_url, read_artworks)
 
 
 # patchwork combine -------------------------------------------------------
-
-
-
+combined_artworks <- wrap_plots(all_artworks)
