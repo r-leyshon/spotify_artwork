@@ -8,7 +8,7 @@
 
 2. Create a list of Spotify album IDs in a column called `album_id`, save as .tsv in the data folder.
 
-3. Run the scripts form the project folder.
+3. Run the scripts from the project file.
 
 Many thanks to [Charlie86](https://github.com/charlie86/spotifyr) 's excellent **spotifyr** web api client for making this process much less painful.
 
