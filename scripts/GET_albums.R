@@ -18,9 +18,11 @@ access_token <- get_spotify_access_token()
 
 
 # import data ------------------------------------------
-
-album_tracker <- read.delim("data/album_tracker.tsv")
-
+# detect the tsv in the data folder
+datafile <- list.files("data", pattern = "*.tsv")
+# read the file in
+album_tracker <- read.delim(paste0("data/", datafile))
+# use spotifyr client to get album details
 all_albums <- lapply(album_tracker$album_id, get_album)
 
 # select urls -------------------------------------------------------------
