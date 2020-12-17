@@ -24,13 +24,23 @@ all_albums <- lapply(album_tracker$album_id, get_album)
 
 # select urls -------------------------------------------------------------
 # cbind to dataframe
-album_tracker$img_url <- unlist(list.select(all_albums, images$url[1]))
+# take the second url which is a mid-size image
+album_tracker$img_url <- unlist(list.select(all_albums, images$url[2]))
 
-# query albums ------------------------------------------------------------
 
-# test_album <- get_album("0TkfHTK2sSV4CxrQWqBrNF")
-# myurl <-  test_album[["images"]][["url"]][1]
-# images <- image_read(myurl)
+# read artwork images -----------------------------------------------------
+
+read_artworks <- function(urls){
+  print(urls)
+  img <- image_read(urls)
+  return(img)
+}
+
+all_artworks <- lapply(album_tracker$img_url, read_artworks)
+
+
+
+# patchwork combine -------------------------------------------------------
 
 
 
