@@ -2,7 +2,13 @@
 
 ### Version 0.2
 
+#### Features
+
 * Convert credentials to toml
+
+
+#### Backlog
+
 * Rate limiter
 * Add ggsave function
 * Add data dictionary to docs
