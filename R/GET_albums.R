@@ -8,6 +8,8 @@ library(magick)
 library(readxl)
 library(rlist)
 library(patchwork)
+library(configr)
+
 
 # source credentials ------------------------------------------------------
 source("credentials/credentials.R")

@@ -1,4 +1,4 @@
-# Spotify Artwork
+# Spotify Artwork v0.1
 
 ![](www/49f33c2a-7f48-424d-bf97-56ddd3117165.png)
 
