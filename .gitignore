@@ -2,6 +2,8 @@
 /data/
 # credentials for your spotify app
 /credentials/
+# output plots folder
+/plots/
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,r

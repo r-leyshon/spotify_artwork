@@ -1,6 +1,6 @@
 # Spotify Artwork
 
-![](plots/49f33c2a-7f48-424d-bf97-56ddd3117165.png)
+![](www/49f33c2a-7f48-424d-bf97-56ddd3117165.png)
 
 ## Get album artwork for a vector of given Spotify album IDs
 
@@ -10,8 +10,8 @@
 
 3. Run the scripts from the project file.
 
-Many thanks to [Charlie86](https://github.com/charlie86/spotifyr) 's excellent **spotifyr** web api client for making this process much less painful.
+Many thanks to [Charlie86](https://github.com/charlie86/spotifyr) 's excellent 'spotifyr' web api client for making this process much less painful.
 
-Also [thomasp85](https://github.com/thomasp85/patchwork)'s excellent **patchwork** package for wrapping the artwork together very easily.
+Also [thomasp85](https://github.com/thomasp85/patchwork)'s excellent 'patchwork' package for wrapping the artwork together very easily.
 
-Last but not least, [ropensci](https://github.com/ropensci/magick)'s **magick** package for simple image manipulation.
+Last but not least, [ropensci](https://github.com/ropensci/magick)'s 'magick' package for simple image manipulation.

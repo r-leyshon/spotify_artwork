@@ -29,6 +29,7 @@ all_albums <- lapply(album_tracker$album_id, get_album)
 # cbind to dataframe
 # take the second url which is a mid-size image
 album_tracker$img_url <- unlist(list.select(all_albums, images$url[2]))
+#album_tracker$img_url <- unlist(list.select(all_albums, images$url[1]))
 
 
 # read artwork images -----------------------------------------------------
