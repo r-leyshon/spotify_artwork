@@ -4,7 +4,7 @@
 
 ## Get album artwork for a vector of given Spotify album IDs
 
-1. [Configure your application](https://developer.spotify.com/documentation/web-api/). [Help on authorisation](https://developer.spotify.com/documentation/general/guides/authorization-guide/).
+1. [Configure your application](https://developer.spotify.com/documentation/web-api/). [Help on authorisation](https://developer.spotify.com/documentation/general/guides/authorization-guide/). Use the generated secrets to populate the required fields within the `credentials.toml`. See `docs/example_credentials.toml` for guidance.
 
 2. Create a list of Spotify album IDs in a column called `album_id`, save as .tsv in the data folder.
 
