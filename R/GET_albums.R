@@ -12,12 +12,12 @@ library(configr)
 
 
 # source credentials ------------------------------------------------------
-source("credentials/credentials.R")
+source("R/config_secrets.R")
 
-# get access token --------------------------------------------------------
-# pulled from system variables configured in credentials.R
+# configure access token --------------------------------------------------
+config_secrets("credentials/credentials.toml")
+# pull from system variables configured above
 access_token <- get_spotify_access_token()
-
 
 # import data ------------------------------------------
 # detect the tsv in the data folder
