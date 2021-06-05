@@ -1,6 +1,4 @@
-
 # read artwork images -----------------------------------------------------
-
 read_artworks <- function(urls = NULL){
   print(urls)
   # read in the image
@@ -9,7 +7,6 @@ read_artworks <- function(urls = NULL){
   plt <- image_ggplot(img, interpolate = FALSE)
   return(plt)
 }
-
 
 # patch_artwork -----------------------------------------------------------
 patch_artwork <- function(album_list = NULL, image_size = 2, save_path = NULL){
