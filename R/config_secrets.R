@@ -1,5 +1,5 @@
 
-config_secrets <- function(toml_path){
+config_secrets <- function(toml_path = NULL){
   # read toml
   creds <- read.config(toml_path)
   # set to system variables
