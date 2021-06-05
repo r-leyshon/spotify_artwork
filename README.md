@@ -6,7 +6,18 @@
 
 1. [Configure your application](https://developer.spotify.com/documentation/web-api/). [Help on authorisation](https://developer.spotify.com/documentation/general/guides/authorization-guide/). Use the generated secrets to populate the required fields within the `credentials.toml`. See `docs/example_credentials.toml` for guidance.
 
-2. Create a list of Spotify album IDs in a column called `album_id`, save as .tsv in the data folder.
+2. Create a list of Spotify album IDs in a column called `album_id`, save as .tsv in the data folder. Please note that the below data dictionary is what I used to record album club recommendations. In order to get the album artworks, only the column `album_id` is required.
+
+### Data Dictionary
+
+| Column Name   | Description              | Data Type | Example                |
+|:--------------|:-------------------------|:----------|:-----------------------|
+| poster        | Name of album poster     | chr       | Joe Bloggs             |
+| artist        | Album artist name        | chr       | Queen                  |
+| album         | Album title              | chr       | Sheer Heart Attack     |
+| date_tracking | Date of posting "d/m/y"  | chr       | 6/12/20                |
+| **album_id**  | Spotify album ID         | chr       | 1Gnrd76EubInPV4KjOJ1Zr |
+
 
 3. Run the scripts from the project file.
 

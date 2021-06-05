@@ -1,3 +1,4 @@
+*.html
 # data folders
 /data/
 # credentials for your spotify app
