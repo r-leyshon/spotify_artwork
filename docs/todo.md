@@ -6,12 +6,12 @@
 
 * Convert credentials to toml
 * ggsave writes patchwork object
+* Added data dictionary to docs
+
 
 #### Backlog
 
-* Add data dictionary to docs
-* Add else if for direct image url cases  / for bad requests
 * Add title to patchwork
-* Function to create patchwork for every album contributer
+* Add else if for direct image url cases  / for bad requests
+* Function to create patchwork for every album contributor
 * Function to create contributor album timeline
-* Rate limiter
