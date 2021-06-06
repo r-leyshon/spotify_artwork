@@ -12,10 +12,10 @@ library(configr)
 library(ggplot2)
 library(extrafont)
 
-# source credentials ------------------------------------------------------
-source("R/config_secrets.R")
-source("R/get_album_deets.R")
-source("R/artwork.R")
+
+# source creds & all funcs ------------------------------------------------
+funcs <- list.files("R/", full.names = TRUE)
+sapply(funcs, source)
 
 # configure access token --------------------------------------------------
 config_secrets("credentials/credentials.toml")
