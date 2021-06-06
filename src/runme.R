@@ -10,6 +10,7 @@ library(rlist)
 library(patchwork)
 library(configr)
 library(ggplot2)
+library(extrafont)
 
 # source credentials ------------------------------------------------------
 source("R/config_secrets.R")
@@ -26,11 +27,14 @@ access_token <- get_spotify_access_token()
 datafile <- list.files("data", pattern = "*.tsv")
 # read the file in
 album_tracker <- read.delim(paste("data", datafile, sep = "/"))
-
 # query api ---------------------------------------------------------------
 album_metadata <- get_album_deets(album_tracker$album_id)
-
 # save a patchwork album art ----------------------------------------------
-patch_artwork(album_list = album_metadata, save_path = "plots/newplot.png")
+patch_artwork(album_list = album_metadata, colnum = 8,
+              opt_title = "Album Club 2020/21",
+              opt_subtitle = "The Year of the Plague",
+              use_font = "Gotham Medium")
 
+# save artwork ------------------------------------------------------------
+ggsave(filename = "plots/newplot.png")
 
