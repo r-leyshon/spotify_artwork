@@ -23,8 +23,8 @@ patch_artwork <- function(album_list = NULL, image_size = 2, colnum = NULL,
   combined_artworks + plot_annotation(title = opt_title,
                                       subtitle = opt_subtitle) &
     theme(text = element_text(family = use_font, colour = font_col),
-          plot.background = element_rect(fill = panel_col),
-          panel.border = element_blank())
+          plot.background = element_rect(fill = panel_col)
+          )
   
 }
 
