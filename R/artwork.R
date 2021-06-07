@@ -8,13 +8,29 @@ read_artworks <- function(urls = NULL){
   return(plt)
 }
 
+# collect_urls ------------------------------------------------------------
+collect_urls <- function(album_list){
+  # vector to collect extracted urls
+  url_list <- c()
+  # if not character, treat as api response
+  if(!is.character(album_list)){
+    url <- album_list[["images"]][["url"]][[image_size]]
+    # otherwise, treat as character
+  } else {
+    url <- album_list[1]
+    }
+  # collect the url for this iteration
+  append(url_list, url)
+}
+
+
 # patch_artwork -----------------------------------------------------------
 patch_artwork <- function(album_list = NULL, image_size = 2, colnum = NULL,
                           rownum = NULL, opt_title = NULL, opt_subtitle = NULL,
                           use_font = NULL, font_col = "#1DB954",
                           panel_col = "#000000"){
-  # return the urls of the specified image size
-  img_url <- unlist(list.select(album_list, images$url[image_size]))
+  # retrieve all the required urls
+  img_url <- unlist(lapply(album_list, collect_urls))  
   # read the artworks from urls
   all_artworks <- lapply(img_url, read_artworks)
   # patchwork combine
