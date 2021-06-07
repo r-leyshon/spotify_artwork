@@ -28,13 +28,12 @@ datafile <- list.files("data", pattern = "*.tsv")
 # read the file in
 album_tracker <- read.delim(paste("data", datafile, sep = "/"))
 # query api ---------------------------------------------------------------
-album_metadata <- get_album_deets(album_tracker$album_id)
+album_metadata <- get_album_deets(album_tracker$spotify_IDs)
 # save a patchwork album art ----------------------------------------------
-patch_artwork(album_list = album_metadata, colnum = 8,
+patch_artwork(album_list = album_metadata, image_size = 2, colnum = 9,
               opt_title = "Album Club 2020/21",
               opt_subtitle = "The Year of the Plague",
               use_font = "Gotham Medium")
-
 # save artwork ------------------------------------------------------------
 ggsave(filename = "plots/newplot.png")
 
