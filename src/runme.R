@@ -29,8 +29,13 @@ datafile <- list.files("data", pattern = "*.tsv")
 album_tracker <- read.delim(paste("data", datafile, sep = "/"))
 # query api ---------------------------------------------------------------
 album_metadata <- get_album_deets(album_tracker$spotify_IDs)
+
+# extract urls ------------------------------------------------------------
+album_tracker$img_url <- unlist(lapply(album_metadata, collect_urls,
+                                       img_size = 2))
+
 # save a patchwork album art ----------------------------------------------
-patch_artwork(album_list = album_metadata, image_size = 2, colnum = 9,
+patch_artwork(album_urls = album_tracker$img_url, colnum = 12,
               opt_title = "Album Club 2020/21",
               opt_subtitle = "The Year of the Plague",
               use_font = "Gotham Medium")
