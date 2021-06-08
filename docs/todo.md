@@ -13,5 +13,6 @@
 
 #### Backlog
 
+* errors in read_artworks need to propagate through to patch artworks
 * Function to create patchwork for every album contributor
 * Function to create contributor album timeline
