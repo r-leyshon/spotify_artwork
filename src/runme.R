@@ -11,6 +11,7 @@ library(patchwork)
 library(configr)
 library(ggplot2)
 library(extrafont)
+library(dplyr)
 
 
 # source creds & all funcs ------------------------------------------------
@@ -41,4 +42,5 @@ patch_artwork(album_urls = album_tracker$img_url, colnum = 12,
               use_font = "Gotham Medium")
 # save artwork ------------------------------------------------------------
 ggsave(filename = "plots/newplot.png")
+
 
