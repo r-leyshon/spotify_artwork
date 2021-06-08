@@ -32,7 +32,7 @@ album_tracker <- read.delim(paste("data", datafile, sep = "/"))
 album_metadata <- get_album_deets(album_tracker$spotify_IDs)
 
 # extract urls ------------------------------------------------------------
-album_tracker$img_url <- unlist(lapply(album_metadata, collect_urls,
+album_tracker$img_url <- unlist(lapply(album_metadata, collect_img_urls,
                                        img_size = 2))
 
 # save a patchwork album art ----------------------------------------------

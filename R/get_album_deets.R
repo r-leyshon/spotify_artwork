@@ -2,7 +2,7 @@
 
 get_album_deets <- function(album_IDs = NULL){
   # Find strings that are too short or are not urls
-  problems <- album_IDs[!grepl("^.{22,}$|http", album_IDs)]
+  problems <- album_IDs[!grepl("^.{22,}$|^https?:////$", album_IDs)]
   # if problems are found, message and stop
   if(length(problems) > 0) {
     message(paste("Problem found with following IDs / urls:",
