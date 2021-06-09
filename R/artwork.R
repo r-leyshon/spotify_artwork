@@ -20,7 +20,7 @@ read_artworks <- function(urls = NULL){
 patch_artwork <- function(album_urls = NULL, colnum = NULL,
                           rownum = NULL, opt_title = NULL, opt_subtitle = NULL,
                           use_font = NULL, font_col = "#1DB954",
-                          panel_col = "#000000"){
+                          panel_col = "#191414"){
   # read the artworks from urls, if read_artworks errors, propagate error
   tryCatch({all_artworks <- lapply(album_urls, read_artworks)}) 
   # patchwork combine
