@@ -13,6 +13,7 @@
 
 #### Backlog
 
+* Function to correct any NAs in album release years
+* Function to create contributor album timeline
 * errors in read_artworks need to propagate through to patch artworks
 * Function to create patchwork for every album contributor
-* Function to create contributor album timeline

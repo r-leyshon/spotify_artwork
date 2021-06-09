@@ -49,4 +49,8 @@ album_tracker$release_year <- unlist(
   lapply(album_metadata, collect_release_years)
   )
 
+# manually correct any NAs ------------------------------------------------
+
+
+
 
