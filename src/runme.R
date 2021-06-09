@@ -43,4 +43,10 @@ patch_artwork(album_urls = album_tracker$img_url, colnum = 12,
 # save artwork ------------------------------------------------------------
 ggsave(filename = "plots/newplot.png")
 
+# release dates -----------------------------------------------------------
+
+album_tracker$release_year <- unlist(
+  lapply(album_metadata, collect_release_years)
+  )
+
 
