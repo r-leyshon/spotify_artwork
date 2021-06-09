@@ -88,5 +88,6 @@ album_tracker %>%
         plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)
   ) +
   scale_y_discrete(position = "right")
-  
+
+ggsave("plots/dumbell.png")
 
