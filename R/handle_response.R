@@ -34,5 +34,3 @@ collect_release_years <- function(album_list = NULL){
   # collect the url for this iteration
   append(all_dates, date)
 }
-
-
