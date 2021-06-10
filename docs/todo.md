@@ -13,7 +13,7 @@
 
 #### Backlog
 
-* Function to create contributor album timeline
-* Add example barplot to readme with anonymised names
 * Function to create patchwork for every album contributor
+* Function to create contributor album timeline - barbell plot using {ggalt}
+* Add example barplot to readme with anonymised names - only worth doing if pursuing above
 * errors in read_artworks need to propagate through to patch artworks

@@ -1,4 +1,4 @@
-R/ignore_me.R
+git_ignore/
 *.html
 # data folders
 /data/
