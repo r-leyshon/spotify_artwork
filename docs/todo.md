@@ -13,6 +13,7 @@
 
 #### Backlog
 
+* Document all funcs
 * Function to create patchwork for every album contributor
 * Function to create contributor album timeline - barbell plot using {ggalt}
 * Add example barplot to readme with anonymised names - only worth doing if pursuing above
