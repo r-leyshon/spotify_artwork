@@ -51,5 +51,15 @@ album_tracker$release_year <- unlist(
   lapply(album_metadata, collect_release_years)
   )
 
+# filter df by poster column values and assign ----------------------------
 
+separate_tables(df = album_tracker, target = "poster")
 
+# list all resulting dfs --------------------------------------------------
+
+poster_dfs <- ls()[grepl("df_", ls())]
+listed_dfs <- lapply(poster_dfs, get)
+
+# patch artworks for all dfs ----------------------------------------------
+
+urls_only <- list.select(listed_dfs, img_url)
