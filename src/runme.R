@@ -27,15 +27,21 @@ access_token <- get_spotify_access_token()
 
 # read data ---------------------------------------------------------------
 # detect the tsv in the data folder
-datafile <- list.files("data", pattern = "*.tsv")
-# read the file in
-album_tracker <- read.delim(paste("data", datafile, sep = "/"))
+datafiles <- list.files("data", pattern = "*.tsv", full.names = TRUE)
+# read the file(s) in
+album_trackers <- lapply(datafiles, read.delim)
+album_tracker <- rlist::list.stack(album_trackers, fill = TRUE)
+album_tracker <- dplyr::select(album_tracker, -Date_tracking)
+
 # query api ---------------------------------------------------------------
 album_metadata <- get_album_deets(album_tracker$spotify_IDs)
 
 # extract urls ------------------------------------------------------------
 album_tracker$img_url <- unlist(lapply(album_metadata, collect_img_urls,
                                        img_size = 2))
+
+
+
 
 # save a patchwork album art ----------------------------------------------
 patch_artwork(album_urls = album_tracker$img_url, colnum = 12,
