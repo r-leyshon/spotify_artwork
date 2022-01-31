@@ -1,4 +1,5 @@
-git_ignore/
+# spotify credentials
+.git_ignore/
 *.html
 # data folders
 /data/
