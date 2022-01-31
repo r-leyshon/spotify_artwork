@@ -1,4 +1,4 @@
-git_ignore/
+.git_ignore/
 *.html
 # data folders
 /data/
