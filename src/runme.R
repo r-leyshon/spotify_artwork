@@ -29,9 +29,10 @@ access_token <- get_spotify_access_token()
 # detect the tsv in the data folder
 datafiles <- list.files("data", pattern = "*.tsv", full.names = TRUE)
 # read the file(s) in
+
 album_trackers <- lapply(datafiles, read.delim)
 album_tracker <- rlist::list.stack(album_trackers, fill = TRUE)
-album_tracker <- dplyr::select(album_tracker, -Date_tracking)
+try(album_tracker <- dplyr::select(album_tracker, -Date_tracking))
 
 # query api ---------------------------------------------------------------
 album_metadata <- get_album_deets(album_tracker$spotify_IDs)
