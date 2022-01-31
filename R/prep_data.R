@@ -22,5 +22,6 @@ if(length(xlsx_files) == 0) {
   write.table(stacked_table, filenm, row.names = FALSE, sep = "\t")
 }
 
+# need to remove any "..." prior to writing to tsv.
 
 
