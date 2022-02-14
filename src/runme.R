@@ -21,7 +21,7 @@ funcs <- list.files("R/", full.names = TRUE)
 sapply(funcs, source)
 
 # configure access token --------------------------------------------------
-config_secrets("credentials/credentials.toml")
+config_secrets(".git_ignore/secrets.toml")
 # pull from system variables configured above
 access_token <- get_spotify_access_token()
 
