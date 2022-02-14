@@ -26,3 +26,8 @@ Many thanks to [Charlie86](https://github.com/charlie86/spotifyr) 's excellent '
 Also [thomasp85](https://github.com/thomasp85/patchwork)'s excellent 'patchwork' package for wrapping the artwork together very easily.
 
 Last but not least, [ropensci](https://github.com/ropensci/magick)'s 'magick' package for simple image manipulation.
+
+
+## ToDo
+
+If more than one tsv is detected in the data folder, only read the most recent date.
