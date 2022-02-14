@@ -21,7 +21,3 @@ if(length(xlsx_files) == 0) {
                    "_albums.tsv")
   write.table(stacked_table, filenm, row.names = FALSE, sep = "\t")
 }
-
-# need to remove any "..." prior to writing to tsv.
-
-
