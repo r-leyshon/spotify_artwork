@@ -14,20 +14,21 @@ library(extrafont)
 library(dplyr)
 library(ggalt)
 library(stringr)
+library(here)
 
 
 # source creds & all funcs ------------------------------------------------
-funcs <- list.files("R/", full.names = TRUE)
+funcs <- list.files(here("R"), full.names = TRUE)
 sapply(funcs, source)
 
 # configure access token --------------------------------------------------
-config_secrets(".git_ignore/secrets.toml")
+config_secrets(here(".git_ignore/secrets.toml"))
 # pull from system variables configured above
 access_token <- get_spotify_access_token()
 
 # read data ---------------------------------------------------------------
 # detect the tsv in the data folder
-datafiles <- list.files("data", pattern = "*.tsv", full.names = TRUE)
+datafiles <- list.files(here("data"), pattern = "*.tsv", full.names = TRUE)
 # read the file(s) in
 
 album_trackers <- lapply(datafiles, read.delim)
@@ -40,7 +41,7 @@ try(album_tracker <- dplyr::select(album_tracker, -Date_tracking))
 
 
 # query api ---------------------------------------------------------------
-album_metadata <- get_album_deets(album_tracker$spotify_IDs)
+album_metadata <- get_album_deets(head(album_tracker)$spotify_IDs)
 
 # extract urls ------------------------------------------------------------
 album_tracker$img_url <- unlist(lapply(album_metadata, collect_img_urls,
