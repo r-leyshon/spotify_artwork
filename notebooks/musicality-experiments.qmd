@@ -11,6 +11,9 @@ library(spotifyr)
 library(ggplot2)
 library(ggridges)
 library(dplyr)
+library(tidyr)
+library(glue)
+library(extrafont)
 source(here("R/config_secrets.R"))
 ```
 
@@ -19,76 +22,56 @@ config_secrets(here(".git_ignore/secrets.toml"))
 access_token <- get_spotify_access_token()
 ```
 
+
 ```{r}
+# get album name
 album = get_album("0IQKAYSzKktyDTSPDLgr2C")
-album$name
-```
-
-```{r}
+# get artist name for title
+artist_name = album[["artists"]]$name
+# collect features for each track in album
 tracks = album[["tracks"]]
-tracks
-```
-
-```{r}
-
 track_ids = tracks$items$id
-track_ids[1]
-```
-
-```{r}
 track_features = data.frame()
+track_names = tracks$items$name
+i = 1
 for(id in track_ids) {
   track = get_track_audio_features(id)
+  track = cbind(track_name = track_names[i], track_order = i, track)
   track_features = rbind(track_features, track)
+  i = i + 1
 }
-
-track_features
-```
-```{r}
-track_analyses = data.frame()
-#for(id in track_ids[1]) {
-#  track = get_track_audio_analysis(id)
-#  track_analyses = rbind(track_analyses, track)
-#}
-
-
-#track_analyses
-
-track_analysis = get_track_audio_analysis(track_ids[1])
-
-```
-
-```{r}
-
-track_analysis$segments
-
-```
-
-
-
-
-```{r}
-joy
+# pivot long on features to plot
+interest_feats = c("danceability", "energy", "speechiness",
+                   "acousticness", "instrumentalness", "valence")
+tracks_long = pivot_longer(track_features, cols=all_of(interest_feats), names_to="features")
 ```
 
 
 ```{r}
-joy <- get_artist_audio_features('joy division')
-ggplot(joy, aes(x = valence, y = album_name, fill = album_name)) + 
-    geom_density_ridges(alpha=0.7, scale = 3, rel_min_height = 0.01, bandwidth = 0.1) + 
-    theme_ridges(grid = FALSE, center_axis_labels = TRUE) +
-    ggtitle("Joyplot of Joy Zipper's joy distributions") +
-  labs(x = "", y = "Album")
+#| warning: false
 
-# This is not Joy Division, seems to be a problem with correct artist selection
+ggplot(tracks_long, aes(x = value, y = features, fill = features)) +
+  geom_density_ridges(alpha=0.7, scale = 3, rel_min_height = 0.01) + 
+  theme_ridges(grid = FALSE, center_axis_labels = TRUE) +
+  ggtitle(
+    glue("{album$name} by {artist_name}"),
+    subtitle = "A Density Ridge Plot of Audio Features.") +
+  labs(x = "", y = "") +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_blank(),
+    axis.ticks = element_blank(),
+    panel.background = element_rect(fill = "black"),
+    plot.background = element_rect(fill = "black"),
+    plot.title = element_text(
+      color = "white", family = "Arial Rounded MT Bold", hjust = 0.3
+      ),
+    plot.subtitle = element_text(
+      color = "white", family = "Arial Rounded MT Bold", hjust = 0.3
+      ),
+    axis.text.y = element_text(
+      color = "white", family = "Arial Rounded MT Bold"
+      )
+    ) 
+
 ```
-
-```{r}
-ggplot(joy, aes(x = valence, y = album_name, fill = stat(x))) +
-  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
-  scale_fill_viridis_c(name = "Valence", option = "C") +
-      ggtitle("Joyplot of Joy Division's joy distributions", subtitle = "Based on valence pulled from Spotify's Web API with spotifyr") +
-  theme_ridges()
-
-```
-
