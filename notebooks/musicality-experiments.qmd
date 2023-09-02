@@ -26,7 +26,7 @@ access_token <- get_spotify_access_token()
 
 ```{r}
 # get album
-album = get_album("0IQKAYSzKktyDTSPDLgr2C")
+album = get_album("6mS0ssCxtLvB0IcVP7sR66")
 # get artist name for title
 artist_name = album[["artists"]]$name
 # collect features for each track in album
@@ -65,10 +65,10 @@ ggplot(tracks_long, aes(x = value, y = features, fill = features)) +
     panel.background = element_rect(fill = "black"),
     plot.background = element_rect(fill = "black"),
     plot.title = element_text(
-      color = "white", family = "Arial Rounded MT Bold", hjust = 0.3
+      color = "white", family = "Arial Rounded MT Bold", size = 14, hjust = 0.5
       ),
     plot.subtitle = element_text(
-      color = "white", family = "Arial Rounded MT Bold", hjust = 0.3
+      color = "white", family = "Arial Rounded MT Bold", size = 10, hjust = 0.5
       ),
     axis.text.y = element_text(
       color = "white", family = "Arial Rounded MT Bold"
