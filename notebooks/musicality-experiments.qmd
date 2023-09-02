@@ -1,0 +1,94 @@
+---
+title: Experiments with Spotify Music Features
+author: R. Leyshon
+date: today
+---
+
+
+```{r}
+library(here)
+library(spotifyr)
+library(ggplot2)
+library(ggridges)
+library(dplyr)
+source(here("R/config_secrets.R"))
+```
+
+```{r}
+config_secrets(here(".git_ignore/secrets.toml"))
+access_token <- get_spotify_access_token()
+```
+
+```{r}
+album = get_album("0IQKAYSzKktyDTSPDLgr2C")
+album$name
+```
+
+```{r}
+tracks = album[["tracks"]]
+tracks
+```
+
+```{r}
+
+track_ids = tracks$items$id
+track_ids[1]
+```
+
+```{r}
+track_features = data.frame()
+for(id in track_ids) {
+  track = get_track_audio_features(id)
+  track_features = rbind(track_features, track)
+}
+
+track_features
+```
+```{r}
+track_analyses = data.frame()
+#for(id in track_ids[1]) {
+#  track = get_track_audio_analysis(id)
+#  track_analyses = rbind(track_analyses, track)
+#}
+
+
+#track_analyses
+
+track_analysis = get_track_audio_analysis(track_ids[1])
+
+```
+
+```{r}
+
+track_analysis$segments
+
+```
+
+
+
+
+```{r}
+joy
+```
+
+
+```{r}
+joy <- get_artist_audio_features('joy division')
+ggplot(joy, aes(x = valence, y = album_name, fill = album_name)) + 
+    geom_density_ridges(alpha=0.7, scale = 3, rel_min_height = 0.01, bandwidth = 0.1) + 
+    theme_ridges(grid = FALSE, center_axis_labels = TRUE) +
+    ggtitle("Joyplot of Joy Zipper's joy distributions") +
+  labs(x = "", y = "Album")
+
+# This is not Joy Division, seems to be a problem with correct artist selection
+```
+
+```{r}
+ggplot(joy, aes(x = valence, y = album_name, fill = stat(x))) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
+  scale_fill_viridis_c(name = "Valence", option = "C") +
+      ggtitle("Joyplot of Joy Division's joy distributions", subtitle = "Based on valence pulled from Spotify's Web API with spotifyr") +
+  theme_ridges()
+
+```
+
