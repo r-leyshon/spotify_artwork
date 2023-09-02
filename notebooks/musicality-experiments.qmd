@@ -6,6 +6,7 @@ date: today
 
 
 ```{r}
+#| warning: false
 library(here)
 library(spotifyr)
 library(ggplot2)
@@ -24,7 +25,7 @@ access_token <- get_spotify_access_token()
 
 
 ```{r}
-# get album name
+# get album
 album = get_album("0IQKAYSzKktyDTSPDLgr2C")
 # get artist name for title
 artist_name = album[["artists"]]$name
@@ -73,5 +74,12 @@ ggplot(tracks_long, aes(x = value, y = features, fill = features)) +
       color = "white", family = "Arial Rounded MT Bold"
       )
     ) 
+
+```
+
+
+```{r}
+# return url of high res album cover art for blog post
+album[["images"]][["url"]][1] #1 is highest available res
 
 ```
